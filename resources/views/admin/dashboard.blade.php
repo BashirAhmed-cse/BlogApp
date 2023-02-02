@@ -5,6 +5,10 @@
 Dashbord
 @endsection
 
+@php
+    $page = 'Dashbord';
+@endphp
+
 @section('mainpart')
     
   <!-- Content Row -->

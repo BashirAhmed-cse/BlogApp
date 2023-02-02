@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 
 /*
@@ -47,5 +48,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin', [HomeController::class, 'index'])->name('admin.dashboard');
 
     Route::post('/admin/logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
+
+    Route::resource('/admin/category',CategoryController::class);
 
 });
