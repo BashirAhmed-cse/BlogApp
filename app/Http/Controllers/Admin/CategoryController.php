@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category');
+        $categories= Category::orderby('id','desc')->get();
+        return view('admin.category',compact('categories'));
     }
 
     /**
@@ -24,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -35,7 +38,23 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     $request->validate([
+      'name'=>'required|unique:categories,name',
+     ]);
+    //    $category = new Category();
+    //    $category->name=$request->name;
+    //    $category->description=$request->description;
+    //    $category->save();
+
+    $data=[
+        'name' =>$request->name,
+        'description' =>$request->description,
+         
+    ];
+
+    Category::create($data);
+
+    return back();
     }
 
     /**
@@ -69,7 +88,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categories = Category::find($id);
+      
+
+        $request->validate([
+            'name'=>'required|unique:categories,name',
+           ]);
+
+           $data=[
+            'name' =>$request->name,
+            'description' =>$request->description,
+             
+        ];
+    
+        $categories->update($data);
+    
+        return back();
     }
 
     /**
@@ -80,6 +114,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categories = Category::find($id);
+        $categories->delete();
+        return back();
     }
 }
