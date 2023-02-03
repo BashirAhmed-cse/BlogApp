@@ -32,6 +32,12 @@
                 <span>Category</span></a>
         </li>
 
+        <li class="nav-item @if ( $page == 'Post') active @endif">
+            <a class="nav-link" href="{{route('post.index')}}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Post</span></a>
+        </li>
+
     <hr class="sidebar-divider">
 
     <!-- Heading -->
