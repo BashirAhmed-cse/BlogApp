@@ -54,7 +54,7 @@ class CategoryController extends Controller
 
     Category::create($data);
 
-    $notify = ['messege' => 'category created successfully', 'alert-type' => 'success'];
+    $notify = ['messege' => 'category created successfully', 'alert-type' => 'success',];
 
     return back()->with($notify);
     }
