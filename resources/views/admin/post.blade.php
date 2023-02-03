@@ -27,11 +27,13 @@
          </thead>
          <tbody>
            
-                
+             @foreach ($posts as $key=>$item)
+                 
+             
             <tr>
-                <td>1</td>
-                <td>name</td>
-                <td>Description</td>
+                <td>{{++$key}}</td>
+                <td>{{$item->title}}</td>
+                <td>{{$item->description}}</td>
                 <td>
                    <div class="d-flex">
                     <button href="" class="btn btn-primary btn-sm mr-1" data-toggle="modal" 
@@ -45,6 +47,7 @@
                    </div>
                 </td>
             </tr>
+            @endforeach
             <!--edit Category Modal-->
    <div class="modal fade" id="#editPostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
    aria-hidden="true">
