@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+
 use Illuminate\Http\Request;
+
+
 
 class PostController extends Controller
 {
@@ -17,7 +20,12 @@ class PostController extends Controller
     public function index()
     {
         $categories=Category::all();
-        $posts = Post::all();
+
+        $objPost = new Post();
+        $posts = $objPost->join('categories','categories.id','=', 'posts.category_id')
+        ->select('posts.*','categories.name as category_name')
+        ->get();  
+         
         return view('admin.post',compact('categories','posts'));
     }
 
@@ -93,7 +101,26 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title'=> 'required',
+            'category_id' => 'required',
+          ]); 
+          $data= [
+            'title' => $request->title,
+            'category_id' => $request->category_id,
+            'description' => $request->description,
+            'status' => $request->status,
+        ];
+        if($request->hasFile('thumbnail')){
+
+            $file = $request->file('thumbnail');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time(). '.' .$extension;
+            $file->move(public_path('post_thumnails'),$filename);
+            $data['thumbnail'] = $filename;
+        }
+        Post::where('id',$id)->update($data);
+        return back();
     }
 
     /**
@@ -104,6 +131,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $posts = Post::find($id);
+        $posts->delete();
+        return back();
     }
 }

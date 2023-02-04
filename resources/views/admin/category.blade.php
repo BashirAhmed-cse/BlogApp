@@ -26,18 +26,18 @@
             </tr>
          </thead>
          <tbody>
-            @foreach ($categories as $key=>$list)
+            @foreach ($categories as $key=>$categoryList)
                 
             <tr>
                 <td>{{++$key}}</td>
-                <td>{{$list->name}}</td>
-                <td>{{$list->description}}</td>
+                <td>{{$categoryList->name}}</td>
+                <td>{{$categoryList->description}}</td>
                 <td>
                    <div class="d-flex">
                     <button href="" class="btn btn-primary btn-sm mr-1" data-toggle="modal" 
-                    data-target="{{'#edit' .$list->id. 'CategoryModal'}}"><i class="fas fa-edit"></i></button>
+                    data-target="{{'#edit' .$categoryList->id. 'CategoryModal'}}"><i class="fas fa-edit"></i></button>
 
-                   <form method="POST" action="{{route('category.destroy',$list->id)}}">
+                   <form method="POST" action="{{route('category.destroy',$categoryList->id)}}">
                     @csrf
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i></button>
@@ -46,27 +46,27 @@
                 </td>
             </tr>
             <!--edit Category Modal-->
-   <div class="modal fade" id="{{'edit' .$list->id. 'CategoryModal'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+   <div class="modal fade" id="{{'edit' .$categoryList->id. 'CategoryModal'}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
    aria-hidden="true">
    <div class="modal-dialog" role="document">
        <div class="modal-content">
            <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Update: {{$list->name}}</h5>
+               <h5 class="modal-title" id="exampleModalLabel">Update: {{$categoryList->name}}</h5>
                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                    <span aria-hidden="true">×</span>
                </button>
            </div>
-           <form action="{{route('category.update',$list->id)}}" method="post">
+           <form action="{{route('category.update',$categoryList->id)}}" method="post">
                @csrf
                <input type="hidden" name="_method" value="put">
            <div class="modal-body">
                    <div class="form-group">
                      <label for="category_name">Category Name</label>
-                     <input type="text" class="form-control" name="name" id="name" value="{{$list->name}}" required>
+                     <input type="text" class="form-control" name="name" id="name" value="{{$categoryList->name}}" required>
                    </div>
                    <div class="form-group">
                        <label for="category_name">Category Description</label>
-                       <textarea name="description" id="description" class="form-control" rows="3">{{$list->description}}</textarea>
+                       <textarea name="description" id="description" class="form-control" rows="3">{{$categoryList->description}}</textarea>
                      </div>
               
            </div>
