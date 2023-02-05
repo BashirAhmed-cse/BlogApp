@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,9 @@ use App\Http\Controllers\Admin\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[UserController::class,'index']);
+Route::get('/posts/{id}',[UserController::class,'single_p_view'])->name('single_post_view');
+Route::get('/posts/category/{category_id}',[UserController::class,'filter_by_category'])->name('filter_by_category');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
