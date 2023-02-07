@@ -28,14 +28,26 @@
           <ul class="navbar-nav mx-auto">
             <li class="nav-item dropdown">
               <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">Account <i class="ti-angle-down ml-1"></i>
+                aria-expanded="false">
+                @auth
+                      @if(auth()->user()->photo)
+                      <img src="{{asset('photo/'.auth()->user()->photo)}}" class="rounded-circle" style="height: 20px; width:20px">
+                    @else
+                      <img src="{{asset('photo/nophoto.jpg')}}" class="rounded-circle" style="height: 20px; width:20px">
+                    @endif
+                @else
+                <img src="{{asset('photo/nophoto.jpg')}}" class="rounded-circle" style="height: 20px; width:20px">
+                @endauth
+                <i class="ti-angle-down ml-1"></i>
               </a>
               <div class="dropdown-menu">
                 
                @auth
-               <a class="dropdown-item" href="author.html">Profile</a>
-                
-               <a class="dropdown-item" href="author-single.html">Logout</a>
+               <a class="dropdown-item" href="author.html">{{auth()->user()->name}}</a>
+               <form action="{{route('logout')}}" method="post">
+                 @csrf
+                 <button type="submit" class="dropdown-item">Logout</button>
+               </form>
                    @else
                    <a class="dropdown-item" href="{{route('login')}}">Login</a>
                 

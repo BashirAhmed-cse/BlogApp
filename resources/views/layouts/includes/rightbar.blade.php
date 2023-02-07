@@ -30,7 +30,7 @@
       <a href="about-me.html" class="btn btn-primary mb-2">About me</a>
     </div>
     
-    <!-- Promotion -->
+    {{-- <!-- Promotion -->
     <div class="promotion">
       <img src="{{asset('user_assets/images/promotion.jpg')}}" class="img-fluid w-100">
       <div class="promotion-content">
@@ -38,7 +38,7 @@
         <p class="text-white mb-4">Lorem ipsum dolor sit amet, consectetur sociis. Etiam nunc amet id dignissim. Feugiat id tempor vel sit ornare turpis posuere.</p>
         <a href="https://themefisher.com/" class="btn btn-primary">Get Started</a>
       </div>
-    </div>
+    </div> --}}
   
     <!-- authors -->
     <div class="widget widget-author">
@@ -104,7 +104,7 @@
         <li><a href="tags.html" class="d-flex">Wondarland <small class="ml-auto">(1)</small></a></li>
       </ul>
     </div><!-- tags -->
-    <div class="widget">
+    {{-- <div class="widget">
       <h4 class="widget-title"><span>Tags</span></h4>
       <ul class="list-inline widget-list-inline widget-card">
         <li class="list-inline-item"><a href="tags.html">City</a></li>
@@ -123,12 +123,12 @@
         <li class="list-inline-item"><a href="tags.html">Vlog</a></li>
         <li class="list-inline-item"><a href="tags.html">Wow</a></li>
       </ul>
-    </div><!-- recent post -->
-    <div class="widget">
-      <h4 class="widget-title">Recent Post</h4>
+    </div><!-- recent post --> --}}
+    {{-- <div class="widget">
+      <h4 class="widget-title">Recent Post</h4> --}}
   
       <!-- post-item -->
-      <article class="widget-card">
+      {{-- <article class="widget-card">
         <div class="d-flex">
           <img class="card-img-sm" src="{{asset('user_assets/images/post/post-10.jpg')}}">
           <div class="ml-3">
@@ -140,9 +140,9 @@
             </ul>
           </div>
         </div>
-      </article>
+      </article> --}}
       
-      <article class="widget-card">
+      {{-- <article class="widget-card">
         <div class="d-flex">
           <img class="card-img-sm" src="{{asset('user_assets/images/post/post-3.jpg')}}">
           <div class="ml-3">
@@ -168,11 +168,11 @@
             </ul>
           </div>
         </div>
-      </article>
+      </article> --}}
     </div>
   
     <!-- Social -->
-    <div class="widget">
+    {{-- <div class="widget">
       <h4 class="widget-title"><span>Social Links</span></h4>
       <ul class="list-inline widget-social">
         <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
@@ -181,7 +181,7 @@
         <li class="list-inline-item"><a href="#"><i class="ti-github"></i></a></li>
         <li class="list-inline-item"><a href="#"><i class="ti-youtube"></i></a></li>
       </ul>
-    </div>
+    </div> --}}
   </aside>
 </div>
 </div>
